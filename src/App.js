@@ -1,23 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
-
+import { ThemeContext } from './context/ThemeContext';
+import Navbar from './components/Navbar';
+import { useContext } from 'react';
+import styles from './components/Navbar.module.css'
+import {Sidebar} from './components/Sidebar';
 function App() {
+  const { isLight } = useContext(ThemeContext)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={ `App ${isLight ? styles.light : styles.dark}`}>
+<Navbar/>
+<Sidebar/>
     </div>
   );
 }
